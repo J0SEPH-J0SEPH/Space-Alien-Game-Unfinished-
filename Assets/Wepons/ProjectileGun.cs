@@ -6,16 +6,16 @@ public class ProjectileGun : MonoBehaviour {
 
     public GameObject bullet;
     public Transform Pointer;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public GenirateTerrain GenTerrain;
+    // Use this for initialization
+
+
+    // Update is called once per frame
+    public void ShootGun () {
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(bullet, Pointer.position, Pointer.rotation);
+            GameObject Bullet =  Instantiate(bullet, Pointer.position, Pointer.rotation);
+            Bullet.GetComponent<bulletHit>().TerrainGen = GenTerrain;
         }
 	}
 }

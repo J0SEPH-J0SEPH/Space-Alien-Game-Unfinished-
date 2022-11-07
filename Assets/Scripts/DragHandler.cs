@@ -9,8 +9,8 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
     public GameObject ItembeingDraged;
     public Vector3 startposition;
     public Vector3 OldPose;
-    public Transform Parnt;
-    public Transform OldParnt;
+    public Transform NewParent;
+    public Transform OldParent;
     public Transform Child;
     public Text tr;
     public Item ITM;
@@ -20,8 +20,8 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Parnt = transform.parent;
-        OldParnt = transform.parent;
+        NewParent = transform.parent;
+        OldParent = transform.parent;
         OldPose = transform.position;
         startposition = transform.position;
 
@@ -43,27 +43,27 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
                 Debug.Log("Dead");
                 OtherHandler.Itemamount += Itemamount;
                 OtherHandler.Getsome();
-                OldParnt.GetComponent<slotholder>().Checkslot(0);
+                OldParent.GetComponent<SlotHolder>().Checkslot(0);
                 Child = null;
                 Destroy(gameObject);
             }
             else
             {
-                Child.SetParent(OldParnt);
+                Child.SetParent(OldParent);
                 Child.position = OldPose;
-                OldParnt.GetComponent<slotholder>().Checkslot(OtherHandler.ITM.ID);
+                OldParent.GetComponent<SlotHolder>().Checkslot(OtherHandler.ITM.ID);
             }
         }
         else
         {
-            OldParnt.GetComponent<slotholder>().Checkslot(0);
+            OldParent.GetComponent<SlotHolder>().Checkslot(0);
         }
         
         transform.position = startposition;
-        transform.SetParent(Parnt);
+        transform.SetParent(NewParent);
         if (Col != null)
         {
-            Col.GetComponent<slotholder>().Checkslot(ITM.ID);
+            Col.GetComponent<SlotHolder>().Checkslot(ITM.ID);
 
         }
     }
@@ -81,7 +81,7 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
                 OtherHandler = Child.gameObject.GetComponent<DragHandler>();
             }
             startposition = collision.transform.position;
-            Parnt = collision.transform;
+            NewParent = collision.transform;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -90,7 +90,7 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
         Child = null;
         OtherHandler = null;
         startposition = OldPose;
-        Parnt = OldParnt;
+        NewParent = OldParent;
     }
 
     public void Getsome()

@@ -9,7 +9,7 @@ public class Craftingslot : MonoBehaviour {
     public int maxcrafnumber = 1;
     public ItemList LO;
     public GameObject CraftTyle;
-    public craftBlock Craft;
+    public CraftBlock Craft;
     // Update is called once per frame
 
     public void Hasitem () {
@@ -18,34 +18,28 @@ public class Craftingslot : MonoBehaviour {
         int current = 0;
         foreach (int ID in itemIdNeeded)
         {
-            if (LO.theAmount[ID] >= amount[current])
-            {
+            if (LO.theAmount[ID] >= amount[current]){
                 craftnumber += 1;
-            }else if (LO.theAmount[ID] <= 0)
-            {
+            }else if (LO.theAmount[ID] <= 0){
                 CanCraft = false;
                 Isnull();
                 return;
             }
-            else
-            {
+            else{
                 craftnumber = 0;
             }
             current += 1;
         }
-        if(craftnumber >= maxcrafnumber)
-        {
+        if(craftnumber >= maxcrafnumber){
             Craft.canCraft = true;
             CraftTyle.SetActive(true);
         }
-        else
-        {
+        else{
             Craft.canCraft = false;
             CraftTyle.SetActive(true);
         }
 	}
-    public void Isnull()
-    {
+    public void Isnull(){
         CraftTyle.SetActive(false);
     }
 }

@@ -1,0 +1,5 @@
+This is a unfinished project and at some point will be updated
+
+I wanted to experiment with Perling noise which is fun to use and has a lot of useful uses,
+
+I created this small game at high school, I wanted to create tile set terrain which could be destroyed and have the terrain react and change based on the explosion.

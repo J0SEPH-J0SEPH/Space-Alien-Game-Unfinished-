@@ -2,35 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-public class DynamicBlock : MonoBehaviour {
+public class WoodBreaker : MonoBehaviour {
 
     public GameObject Itemsin;
     public int HP;
-    public Tilemap highlightMap;
+    public Tilemap background;
     public bool Dead = false;
-    // Use this for initialization
-    void Start () {
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision){
         if (!Dead && collision.CompareTag("Breacker")) {
             HP -= 1;
-            highlightMap = GenirateTerrain.instance.BuildMap;
+            background = GenirateTerrain.instance.background;
             Invoke("DeadBlock", 0.1f);
         }
-
     }
 
-    void DeadBlock()
-    {
+    void DeadBlock(){
         Spawn();
         Dead = true;
-        highlightMap.SetTile(new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z)), null);
+        background.SetTile(new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z)), null);
     }
-    void Spawn()
-    {
+    void Spawn(){
         Instantiate(Itemsin, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0), transform.rotation);
     }
 }

@@ -337,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1740282980631648, guid: ca2d7e4c2ab6f5b4cb87dd6677ca2e91, type: 2}
   Pointer: {fileID: 1078554755}
+  GenTerrain: {fileID: 0}
 --- !u!1 &117936792
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1740282980631648, guid: ca2d7e4c2ab6f5b4cb87dd6677ca2e91, type: 2}
   Pointer: {fileID: 1670994078}
+  GenTerrain: {fileID: 0}
 --- !u!212 &117936795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -786,18 +788,36 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
+      e00: NaN
+      e01: 9.8e-44
+      e02: NaN
+      e03: 0
+      e10: NaN
+      e11: 0
+      e12: NaN
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 9.8e-44
+      e23: 0
+      e30: NaN
+      e31: 0
+      e32: 0
+      e33: 0
+  - m_RefCount: 0
+    m_Data:
       e00: 0
-      e01: -4.992771e+21
-      e02: 3.9003654e-36
+      e01: 5.9361594e-15
+      e02: 6.790047e-36
       e03: 8.789661e-39
       e10: 0
-      e11: 2.5613e-41
+      e11: 3.528e-41
       e12: 0
       e13: 0
       e20: 8.724732e-39
       e21: 0
-      e22: 832.249
-      e23: 28653.312
+      e22: 852.7158
+      e23: 22.275269
       e30: 0
       e31: 0
       e32: 1e-45
@@ -811,7 +831,7 @@ Tilemap:
       e10: 0
       e11: 0
       e12: NaN
-      e13: 0
+      e13: 4.4765625
       e20: 0
       e21: 0
       e22: 0
@@ -819,24 +839,6 @@ Tilemap:
       e30: 0
       e31: 0
       e32: 0
-      e33: 0
-  - m_RefCount: 0
-    m_Data:
-      e00: 0
-      e01: -4.992771e+21
-      e02: 3.5140996e-36
-      e03: 8.789661e-39
-      e10: 0
-      e11: 2.5613e-41
-      e12: 0
-      e13: 0
-      e20: 8.724732e-39
-      e21: 0
-      e22: 832.249
-      e23: 28653.312
-      e30: 0
-      e31: 0
-      e32: 1e-45
       e33: 0
   - m_RefCount: 0
     m_Data:
@@ -858,7 +860,7 @@ Tilemap:
       e33: 0
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 8e-45, g: 8e-45, b: 8e-45, a: 8e-45}
+    m_Data: {r: 1.3e-44, g: 1.3e-44, b: 1.3e-44, a: 1.3e-44}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -14, y: -7, z: 0}
@@ -1543,6 +1545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1740282980631648, guid: bc3c37a31a32fd2449f9b97df44a3d96, type: 2}
   Pointer: {fileID: 895364702}
+  GenTerrain: {fileID: 0}
 --- !u!212 &645866470
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2096,7 +2099,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Blocks:
   - {fileID: 11400000, guid: d474e8f000409a744bb3910cdfd7094a, type: 2}
-  BackgroundBlocks: {fileID: 11400000, guid: f3bd78811adf99849beced592cf05473, type: 2}
+  - {fileID: 11400000, guid: 37c54e261d95f384ebe387f04cc11571, type: 2}
+  BackgroundBlocks:
+  - {fileID: 11400000, guid: 4511b4b349dc73e418f62168ff688fb4, type: 2}
   BuildMap: {fileID: 1226083201}
   background: {fileID: 1039739557}
   seed: 0
@@ -2880,7 +2885,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1371380532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.3, y: 39.14, z: 0}
+  m_LocalPosition: {x: 19, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2100052477}
@@ -2902,11 +2907,15 @@ MonoBehaviour:
   JumpAmount: 13.5
   Jumped: 0
   anim: {fileID: 1371380538}
-  X: 0
+  Xinput: 0
   isGrounded: 0
   Ground:
     serializedVersion: 2
     m_Bits: 55
+  PLAnim: {fileID: 2100052478}
+  PlayerEye: {fileID: 375219798}
+  GenTerrain: {fileID: 921264519}
+  GunScript: {fileID: 111469488}
 --- !u!58 &1371380537
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2921,7 +2930,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.03}
   serializedVersion: 2
-  m_Radius: 0.47
+  m_Radius: 0.5
 --- !u!95 &1371380538
 Animator:
   serializedVersion: 3
@@ -4001,6 +4010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1740282980631648, guid: ca2d7e4c2ab6f5b4cb87dd6677ca2e91, type: 2}
   Pointer: {fileID: 1557121569}
+  GenTerrain: {fileID: 0}
 --- !u!212 &1810339735
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4095,6 +4105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1740282980631648, guid: ca2d7e4c2ab6f5b4cb87dd6677ca2e91, type: 2}
   Pointer: {fileID: 1093082792}
+  GenTerrain: {fileID: 0}
 --- !u!212 &1814441322
 SpriteRenderer:
   m_ObjectHideFlags: 0

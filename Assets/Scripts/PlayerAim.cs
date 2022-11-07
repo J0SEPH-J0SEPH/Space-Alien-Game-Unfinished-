@@ -10,7 +10,7 @@ public class PlayerAim : MonoBehaviour {
     private Vector3 object_pos;
     private float angle;
 
-    void Update()
+    public void UpdatePlayerAnim()
     {
         mouse_pos = Input.mousePosition;
         mouse_pos.z = -20;
@@ -19,5 +19,10 @@ public class PlayerAim : MonoBehaviour {
         mouse_pos.y = mouse_pos.y - object_pos.y;
         angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+
+        }
     }
 }

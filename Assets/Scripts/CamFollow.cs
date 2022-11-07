@@ -5,9 +5,6 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour {
     public Transform Follow;
 	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void LateUpdate () {

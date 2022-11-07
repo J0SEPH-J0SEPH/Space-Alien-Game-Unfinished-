@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemMenuPicker : MonoBehaviour {
 
     public static ItemMenuPicker instance;
-    public slotholder[] Drags;
+    public SlotHolder[] Drags;
     public GameObject newItemSlot;
     public int Item;
     public Item[] ITMS;
@@ -22,7 +22,7 @@ public class ItemMenuPicker : MonoBehaviour {
     public void IdCheck()
     {
         Debug.Log("Works");
-        foreach (slotholder ITMSlot in Drags)
+        foreach (SlotHolder ITMSlot in Drags)
         {
             if (ITMSlot.ItemID == Item)
             {
@@ -35,7 +35,7 @@ public class ItemMenuPicker : MonoBehaviour {
 
     void CheckforEmpty()
     {
-        foreach(slotholder Slot in Drags)
+        foreach(SlotHolder Slot in Drags)
         {
             if(Slot.transform.childCount == 0)
             {

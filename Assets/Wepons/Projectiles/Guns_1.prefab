@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -102,6 +102,8 @@ MonoBehaviour:
   Excriment: {fileID: 1313102172789912, guid: ac440b4fa41346c4ca1e8c415f9691f7, type: 2}
   RB: {fileID: 50723491055256208}
   speed: 25
+  TerrainGen: {fileID: 0}
+  ExploshionSize: 8
 --- !u!212 &212303968549006480
 SpriteRenderer:
   m_ObjectHideFlags: 1

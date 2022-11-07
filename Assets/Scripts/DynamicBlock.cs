@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-public class WoodBraker : MonoBehaviour {
+public class DynamicBlock : MonoBehaviour {
 
     public GameObject Itemsin;
     public int HP;
-    public Tilemap background;
+    public Tilemap highlightMap;
     public bool Dead = false;
     // Use this for initialization
     void Start () {
@@ -15,9 +15,10 @@ public class WoodBraker : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (!Dead && collision.CompareTag("Breacker")) {
             HP -= 1;
-            background = GenirateTerrain.instance.background;
+            highlightMap = GenirateTerrain.instance.BuildMap;
             Invoke("DeadBlock", 0.1f);
         }
 
@@ -27,7 +28,7 @@ public class WoodBraker : MonoBehaviour {
     {
         Spawn();
         Dead = true;
-        background.SetTile(new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z)), null);
+        highlightMap.SetTile(new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z)), null);
     }
     void Spawn()
     {

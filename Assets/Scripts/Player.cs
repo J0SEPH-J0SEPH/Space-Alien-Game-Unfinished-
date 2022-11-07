@@ -8,21 +8,30 @@ public class Player : MonoBehaviour {
     public float JumpAmount;
     public bool Jumped;
     public Animator anim;
-    public float X;
+    public float Xinput;
     public bool isGrounded;
     public LayerMask Ground;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    public PlayerAim PLAnim;
+    public keepRotation PlayerEye;
+    public GenirateTerrain GenTerrain;
+    public ProjectileGun GunScript;
+    // Use this for initialization
+    void Start()
+    {
+        GunScript.GenTerrain = GenTerrain;
+    }
+
+
 	// Update is called once per frame
 	void Update () {
         HandleAnimations();
         HandleJump();
+        PlayerEye.keepEyeRot();
+        PLAnim.UpdatePlayerAnim();
+        GunScript.ShootGun();
 
-        X = Input.GetAxis("Horizontal")*10;
-        RB.velocity = new Vector2(X,RB.velocity.y);
+        Xinput = Input.GetAxis("Horizontal")*10;
+        RB.velocity = new Vector2(Xinput, RB.velocity.y);
     }
     void HandleJump()
     {
@@ -46,7 +55,7 @@ public class Player : MonoBehaviour {
     void HandleAnimations()
     {
         anim.SetFloat("Ymomentom", RB.velocity.y);
-        anim.SetFloat("Speed",Mathf.Abs(X));
+        anim.SetFloat("Speed",Mathf.Abs(Xinput));
         anim.SetBool("IsGrounded", isGrounded);
     }
 }
